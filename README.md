@@ -52,7 +52,7 @@ We introduce **LLaDA2.0-Uni**, a unified dLLM-based Mixture-of-Experts (MoE) mod
 #### 1. Create a conda environment
 
 ```bash
-git clone https://github.com/inclusionAI/LLaDA2-Uni && cd LLaDA2-Uni
+git clone https://github.com/inclusionAI/LLaDA2.0-Uni && cd LLaDA2.0-Uni
 conda create -n llada2_uni python=3.10 -y
 conda activate llada2_uni
 ```
@@ -73,6 +73,12 @@ pip install flash-attn --no-build-isolation
 
 ```bash
 pip install -r requirements.txt
+```
+
+#### 5. Download weights
+```bash
+mkdir inclusionAI
+hf download inclusionAI/LLaDA2.0-Uni --local-dir=inclusionAI/LLaDA2.0-Uni
 ```
 
 ### 🧨 Inference
@@ -257,7 +263,7 @@ result = model.generate_image(
 
 ```bash
 # Text-to-Image
-python scripts/t2i_generate.py --model_path inclusionAI/LLaDA2.0-Uni --prompt "A modern Scandinavian kitchen with white cabinetry, marble countertops, and a single orchid on the island. A Nordic woman with sleek blonde ponytail, wearing an oversized sweater and dainty silver necklaces, stirs a matcha bowl with a bamboo whisk, eyes sparkling with quiet joy. Shot with 50mm, f/2.5, diffused window light, cool white balance, low saturation, clean skin retouch. Mood: serene, wholesome, hygge."
+python scripts/t2i_generate.py --model_path inclusionAI/LLaDA2.0-Uni --prompt "A modern Scandinavian kitchen with white cabinetry, marble countertops, and a single orchid on the island. A Nordic woman with sleek blonde ponytail, wearing an oversized sweater and dainty silver necklaces, stirs a matcha bowl with a bamboo whisk, eyes sparkling with quiet joy. Shot with 50mm, f/2.5, diffused window light, cool white balance, low saturation, clean skin retouch. Mood: serene, wholesome, hygge." --image_h=1024 --image_w=1024
 
 # Image Understanding
 python scripts/mmu_understand.py --model_path inclusionAI/LLaDA2.0-Uni --image ./assets/understanding_example.png
