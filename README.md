@@ -78,7 +78,7 @@ pip install -r requirements.txt
 #### 5. Download weights
 ```bash
 mkdir inclusionAI
-hf download inclusionAI/LLaDA2.0-Uni --local-dir=inclusionAI/LLaDA2.0-Uni
+huggingface-cli download inclusionAI/LLaDA2.0-Uni --local-dir inclusionAI/LLaDA2.0-Uni
 ```
 
 ### 🧨 Inference
