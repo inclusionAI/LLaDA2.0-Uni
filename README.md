@@ -18,8 +18,12 @@
   - 🎯 Image Editing Inference code!
   - 🎯 SPRINT Acceleration for dLLM Backbone!
   
-
-
+## 📝 TODO
+- [ ] Diffusers support
+- [ ] ComfyUI support
+- [ ] Quantized model
+- [ ] SGLang support
+- [ ] RL optimization
 
 ## 📚 Model Introduction 
 We introduce **LLaDA2.0-Uni**, a unified dLLM-based Mixture-of-Experts (MoE) model that seamlessly integrates multimodal understanding and generation.
