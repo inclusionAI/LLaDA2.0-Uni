@@ -4,13 +4,27 @@
 <div align="center">
  <h1> LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model </h1>
 
-  [[📑 Technical Report ](https://arxiv.org/abs/2604.20796)] &emsp; [[🤗 HuggingFace ](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)]&emsp; [[🤖 ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni)]
+<a href="https://arxiv.org/abs/2604.20796" target="_blank"><img src="https://img.shields.io/badge/Technical%20Report-b5212f.svg?logo=arxiv" height="21px"></a>
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-LLaDA2.0--Uni-yellow)](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)&#160;
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-LLaDA2.0--Uni--FP8-yellow)](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8)&#160;
+
+[![ModelScope Model](https://img.shields.io/badge/🤖%20Checkpoint-LLaDA2.0--Uni-624aff)](https://www.modelscope.cn/models/inclusionAI/LLaDA2.0-Uni)&#160;
+[![ModelScope Model](https://img.shields.io/badge/🤖%20Checkpoint-LLaDA2.0--Uni--FP8-624aff)](https://www.modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8)&#160;
+
+[[📑 Technical Report ](https://arxiv.org/abs/2604.20796)] &emsp; 
+[[🤗 HuggingFace ](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)]&emsp; 
+[[🤖 ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni)]
+
+[[⚡ HuggingFace FP8](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8)]&emsp; 
+[[⚡ ModelScope FP8](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8)]
 
  <b>AGI Research Center, Inclusion AI </b>
 </div>
 
 
 ## 🔥 News
+
+
 - **[2026-04-23]** 🎉 We release the initial version of **LLada2.0-Uni**, including:
   - 🎯 Model Checkpoints on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)!
   - 🎯 Text-to-Image (w/ thinking mode) Inference Code!
@@ -19,9 +33,9 @@
   - 🎯 SPRINT Acceleration for dLLM Backbone!
   
 ## 📝 TODO
+- [x] Quantized model
 - [ ] Diffusers support
 - [ ] ComfyUI support
-- [ ] Quantized model
 - [ ] SGLang support
 - [ ] RL optimization
 
