@@ -11,19 +11,12 @@
 [![ModelScope Model](https://img.shields.io/badge/🤖%20Checkpoint-LLaDA2.0--Uni-624aff)](https://www.modelscope.cn/models/inclusionAI/LLaDA2.0-Uni)&#160;
 [![ModelScope Model](https://img.shields.io/badge/🤖%20Checkpoint-LLaDA2.0--Uni--FP8-624aff)](https://www.modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8)&#160;
 
-[[📑 Technical Report ](https://arxiv.org/abs/2604.20796)] &emsp; 
-[[🤗 HuggingFace ](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)]&emsp; 
-[[🤖 ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni)]
-
-[[⚡ HuggingFace FP8](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8)]&emsp; 
-[[⚡ ModelScope FP8](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8)]
-
  <b>AGI Research Center, Inclusion AI </b>
 </div>
 
 
 ## 🔥 News
-
+- **[2026-05-06]** ⚡ We release the **FP8 quantized versions** on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8) and [ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8).
 
 - **[2026-04-23]** 🎉 We release the initial version of **LLada2.0-Uni**, including:
   - 🎯 Model Checkpoints on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni)!
