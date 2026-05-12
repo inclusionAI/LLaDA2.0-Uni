@@ -101,7 +101,7 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
     # avoids the ~12 GB peak from holding both random init + loaded weights.
     with torch.device("meta"):
         diff_model = ZImageTransformer2DModel(**cfg)
-    ckpt = os.path.join(decoder_dir, "decoder_model.safetensors")
+    ckpt = os.path.join(decoder_dir, "model.safetensors")
     diff_model.load_state_dict(load_file(ckpt, device=str(device)), assign=True)
     diff_model = diff_model.to(dtype=dtype).eval()
 

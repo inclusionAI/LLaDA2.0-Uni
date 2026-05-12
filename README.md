@@ -16,6 +16,7 @@
 
 
 ## 🔥 News
+- **[2026-05-12]** 🖥️ We release **ComfyUI support** — node-based visual workflows for text-to-image, image understanding, and image editing. See [apps/comfyui](./apps/comfyui/) for installation and usage.
 - **[2026-05-06]** ⚡ We release the **FP8 quantized versions** on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8) and [ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8).
 
 - **[2026-04-23]** 🎉 We release the initial version of **LLada2.0-Uni**, including:
@@ -27,8 +28,8 @@
   
 ## 📝 TODO
 - [x] Quantized model
-- [ ] Diffusers support
-- [ ] ComfyUI support
+- [x] Diffusers support
+- [x] ComfyUI support
 - [ ] SGLang support
 - [ ] RL optimization
 
@@ -276,6 +277,51 @@ python scripts/mmu_understand.py --model_path inclusionAI/LLaDA2.0-Uni --image .
 # Image Editing
 python scripts/image_edit.py --model_path inclusionAI/LLaDA2.0-Uni --image ./assets/edit_example.png --instruction "Make it a watercolor painting"
 ```
+
+## 🖥️ ComfyUI Support
+
+We provide native ComfyUI custom nodes for visual, node-based workflows. All three capabilities (text-to-image, image understanding, image editing) are available as drag-and-drop nodes.
+
+### Installation
+
+```bash
+# Symlink into ComfyUI (project must be fully cloned)
+cd /path/to/ComfyUI/custom_nodes
+ln -s /path/to/LLaDA2.0-Uni/apps/comfyui ./LLaDA2Uni
+pip install -r /path/to/LLaDA2.0-Uni/apps/comfyui/requirements.txt
+```
+
+Or use the one-line installer:
+
+```bash
+bash apps/comfyui/install.sh /path/to/ComfyUI
+```
+
+### Available Nodes
+
+| Node | Description |
+|------|-------------|
+| **LLaDA2.0_Uni Loader** | Load model with Flash Attention / SDPA, optional CPU offload |
+| **LLaDA2.0_Uni Text-to-Image** | Generate image tokens from text (with optional thinking mode) |
+| **LLaDA2.0_Uni Image Understanding** | Visual question answering |
+| **LLaDA2.0_Uni Image Editing** | Instruction-based image editing |
+| **LLaDA2.0_Uni Token Decoder** | Decode VQ tokens to pixels (turbo: 8 steps, normal: 50 steps) |
+| **LLaDA2.0_Uni Unload Model** | Free VRAM manually |
+
+### Workflow Examples
+
+```
+# Text-to-Image
+Loader → Text-to-Image → Token Decoder → Preview Image
+
+# Image Understanding
+Load Image + Loader → Image Understanding → Show Text
+
+# Image Editing
+Load Image + Loader → Image Editing → Token Decoder → Preview Image
+```
+
+For full documentation, see [`apps/comfyui/README.md`](./apps/comfyui/README.md).
 
 ## 🚀 SGLang Support (Coming Soon)
 
