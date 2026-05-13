@@ -16,7 +16,7 @@
 
 
 ## 🔥 News
-- **[2026-05-12]** 🖥️ We release **ComfyUI support** — node-based visual workflows for text-to-image, image understanding, and image editing. See [apps/comfyui](./apps/comfyui/) for installation and usage.
+- **[2026-05-12]** 🖥️ We release **ComfyUI and Diffusers support**. See [apps](./apps/) for installation and usage.
 - **[2026-05-06]** ⚡ We release the **FP8 quantized versions** on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8) and [ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8).
 
 - **[2026-04-23]** 🎉 We release the initial version of **LLada2.0-Uni**, including:
