@@ -8,7 +8,6 @@ Usage:
 """
 
 import os, sys, argparse, torch
-from PIL import Image
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
@@ -42,13 +41,12 @@ def encode_image_from_pt(pt_path, offset):
 def encode_image_from_pil(image_path, model_path, device, offset):
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     from encoder.image_tokenizer import ImageTokenizer
-    from decoder.utils import generate_crop_size_list, var_center_crop
+    from decoder.smart_img_process import smart_resize_images
 
     image_tokenizer = ImageTokenizer(
         model_path=model_path, device=device, dtype=torch.bfloat16,
     )
-    crop_size_list = generate_crop_size_list((512 // 32) ** 2, 32)
-    pil_image = var_center_crop(Image.open(image_path).convert("RGB"), crop_size_list=crop_size_list)
+    pil_image = smart_resize_images([image_path])[0]
     info = image_tokenizer.encode_with_info(pil_image)
     _, h, w = info["grid_thw"]
     token_ids = [x + offset for x in info["token_ids"]]
