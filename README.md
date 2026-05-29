@@ -328,7 +328,7 @@ For full documentation, see [`apps/comfyui/README.md`](./apps/comfyui/README.md)
 
 We now support SGLang for high-throughput serving and optimized inference. 
 
-For detailed configuration and examples, please refer to [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md)
+For detailed configuration and examples, please refer to [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md).
 
 ## ⚠️ License
 
