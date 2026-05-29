@@ -16,6 +16,7 @@
 
 
 ## 🔥 News
+- **[2026-05-29]** SGLang Omni support is ready. See [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md) for installation and usage.
 - **[2026-05-12]** 🖥️ We release **ComfyUI and Diffusers support**. See [apps](./apps/) for installation and usage.
 - **[2026-05-06]** ⚡ We release the **FP8 quantized versions** on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8) and [ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8).
 
@@ -30,7 +31,7 @@
 - [x] Quantized model
 - [x] Diffusers support
 - [x] ComfyUI support
-- [ ] SGLang support
+- [x] SGLang support
 - [ ] RL optimization
 
 ## 📚 Model Introduction 
