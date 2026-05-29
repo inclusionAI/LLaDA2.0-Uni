@@ -16,7 +16,7 @@
 
 
 ## 🔥 News
-- **[2026-05-29]** 📣 SGLang Omni support is ready. See [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md) for installation and usage.
+- **[2026-05-29]** 📣 **SGLang Omni** support is ready. See [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md) for installation and usage.
 - **[2026-05-12]** 🖥️ We release **ComfyUI and Diffusers support**. See [apps](./apps/) for installation and usage.
 - **[2026-05-06]** ⚡ We release the **FP8 quantized versions** on [HuggingFace](https://huggingface.co/inclusionAI/LLaDA2.0-Uni-FP8) and [ModelScope](https://modelscope.cn/models/inclusionAI/LLaDA2.0-Uni-FP8).
 
@@ -324,9 +324,11 @@ Load Image + Loader → Image Editing → Token Decoder → Preview Image
 
 For full documentation, see [`apps/comfyui/README.md`](./apps/comfyui/README.md).
 
-## 🚀 SGLang Support (Coming Soon)
+## 🚀 SGLang Support
 
-We are working on integrating [SGLang](https://github.com/sgl-project/sglang) for high-throughput serving and optimized inference. Stay tuned!
+We now support SGLang for high-throughput serving and optimized inference. 
+
+For detailed configuration and examples, please refer to [cookbook](https://github.com/sgl-project/sglang-omni/blob/main/docs/cookbook/llada2_uni.md)
 
 ## ⚠️ License
 
