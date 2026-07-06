@@ -46,7 +46,7 @@ def _create_decoder_model_fn(model, cap_pos, cap_neg, cfg_scale, patch_size, f_p
 @torch.inference_mode()
 def decode_vq_tokens(token_ids, h, w, model_path, device,
                      resolution_multiplier=2, num_steps=50,
-                     decode_mode="normal"):
+                     decode_mode="normal", dtype=None):
     """
     Decode VQ token IDs into a PIL Image.
 
@@ -59,11 +59,15 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
         num_steps: ODE sampling steps.
         decode_mode: ``"normal"`` uses the standard decoder (default, 50 steps);
             ``"decoder-turbo"`` uses the distilled decoder (faster, ~8 steps).
+        dtype: Optional torch dtype. Defaults to bfloat16 on CUDA and float32 on
+            CPU for broader operator support.
 
     Returns:
         PIL.Image
     """
-    dtype = torch.bfloat16
+    device = torch.device(device)
+    if dtype is None:
+        dtype = torch.bfloat16 if device.type == "cuda" else torch.float32
 
     sigvq_path = os.path.join(model_path, "image_tokenizer", "sigvq_embedding.pt")
     if decode_mode == "decoder-turbo":
@@ -88,7 +92,8 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
     # SigVQ is no longer needed — release immediately
     del extractor
     gc.collect()
-    torch.cuda.empty_cache()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
     # ---------- Stage 2: Diffusion ODE sampling ----------
     config_path = os.path.join(decoder_dir, "config.json")
@@ -97,7 +102,7 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
     cfg["axes_lens"] = [32768, 1024, 1024]
     cfg["cap_feat_dim"] = 4096
 
-    # Build model on meta device, load weights directly to GPU, then tie —
+    # Build model on meta device, load weights directly to target device, then tie —
     # avoids the ~12 GB peak from holding both random init + loaded weights.
     with torch.device("meta"):
         diff_model = ZImageTransformer2DModel(**cfg)
@@ -129,7 +134,8 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
     # Diffusion model is done — release before loading VAE
     del diff_model, cap_pos, cap_neg, model_fn
     gc.collect()
-    torch.cuda.empty_cache()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
     # ---------- Stage 3: VAE decode ----------
     vae = AutoencoderKL.from_pretrained(vae_dir, torch_dtype=dtype).to(device).eval()
@@ -140,6 +146,7 @@ def decode_vq_tokens(token_ids, h, w, model_path, device,
 
     del vae
     gc.collect()
-    torch.cuda.empty_cache()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
     return to_pil_image(px[0].float())
