@@ -1,5 +1,5 @@
 """
-Deterministic CPU text-to-image smoke test using a tiny Diffusers model.
+Deterministic CPU text-to-image smoke test using a compact Diffusers model.
 
 This validates that the local Python environment can run an image generation
 pipeline on CPU. It is intentionally separate from the full LLaDA2.0-Uni
@@ -22,17 +22,20 @@ from pathlib import Path
 
 def parse_args():
     p = argparse.ArgumentParser(description="Run a deterministic CPU image-generation smoke test.")
-    p.add_argument("--model-id", default="hf-internal-testing/tiny-stable-diffusion-pipe",
+    p.add_argument("--model-id", default="segmind/tiny-sd",
                    help="Diffusers model id or local model directory.")
-    p.add_argument("--prompt", default="a deterministic test image of a red cube on a blue table")
+    p.add_argument("--prompt", default=(
+        "a centered red apple on a plain wooden table, simple product photo, "
+        "clear object, soft daylight"
+    ))
     p.add_argument("--negative-prompt", default=None)
-    p.add_argument("--height", type=int, default=64)
-    p.add_argument("--width", type=int, default=64)
-    p.add_argument("--steps", type=int, default=2)
-    p.add_argument("--guidance-scale", type=float, default=0.0)
+    p.add_argument("--height", type=int, default=256)
+    p.add_argument("--width", type=int, default=256)
+    p.add_argument("--steps", type=int, default=12)
+    p.add_argument("--guidance-scale", type=float, default=7.5)
     p.add_argument("--seed", type=int, default=1234)
     p.add_argument("--threads", type=int, default=min(os.cpu_count() or 1, 4))
-    p.add_argument("--output", default="artifacts/cpu_smoke/tiny_cpu_seed1234.png")
+    p.add_argument("--output", default="artifacts/cpu_smoke/meaningful_cpu_seed1234.png")
     p.add_argument("--local-files-only", action="store_true")
     p.add_argument("--use-safetensors", action=argparse.BooleanOptionalAction, default=False)
     p.add_argument("--deterministic", action=argparse.BooleanOptionalAction, default=True)
@@ -131,6 +134,7 @@ def main():
         "guidance_scale": args.guidance_scale,
         "seed": args.seed,
         "threads": max(1, args.threads),
+        "local_files_only": args.local_files_only,
         "use_safetensors": args.use_safetensors,
         "deterministic": args.deterministic,
         "device": "cpu",
